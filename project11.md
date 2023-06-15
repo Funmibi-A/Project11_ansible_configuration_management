@@ -186,6 +186,7 @@ Note: your Load Balancer user is ubuntu and user for RHEL-based servers is ec2-u
     - name: run some shell script
       shell: /home/script.sh
 
+# ------------------------------------------------
 - name: update LB server
   hosts: lb
   remote_user: ubuntu
@@ -251,3 +252,4 @@ Note: your Load Balancer user is ubuntu and user for RHEL-based servers is ec2-u
 ![git_pull](./images/git_pull.png)
 
 - Once your code changes appear in master branch – Jenkins will do its job and save all the files (build artifacts) to /var/lib/jenkins/jobs/ansible/builds/<build_number>/archive/ directory on Jenkins-Ansible server.
+
