@@ -150,6 +150,8 @@ Note: your Load Balancer user is ubuntu and user for RHEL-based servers is ec2-u
 ```
 
 > Update your playbooks/common.yml file with this snippet of code:
+- note: divided the playbook into 2 part
+__common.yml__ and __update_lb.yml__
 
 ```
     cd playbooks
@@ -187,6 +189,7 @@ Note: your Load Balancer user is ubuntu and user for RHEL-based servers is ec2-u
       shell: /home/script.sh
 
 # ------------------------------------------------
+
 - name: update LB server
   hosts: lb
   remote_user: ubuntu
@@ -252,4 +255,25 @@ Note: your Load Balancer user is ubuntu and user for RHEL-based servers is ec2-u
 ![git_pull](./images/git_pull.png)
 
 - Once your code changes appear in master branch – Jenkins will do its job and save all the files (build artifacts) to /var/lib/jenkins/jobs/ansible/builds/<build_number>/archive/ directory on Jenkins-Ansible server.
+
+![build_4](./images/build_4.png)
+
+![build#4](./images/build%234.png)
+
+> Run first ansible test
+
+ - cd ansible-config-mgt
+
+```  
+ansible-playbook -i inventory/dev.yml playbooks/common.yml
+```
+![ansible tasks](./images/tasks.png)
+
+> Confirm if wireshark is installed on each server by logging in manually and running wireshark --version
+
+- ssh -A ec2-user@<private-ip-address>
+- ssh -A ubuntu@<private-ip-address>
+
+![nfs_server](./images/nfs_server.png)
+![lb_server](./images/lb_server.png)
 
